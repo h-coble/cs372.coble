@@ -2,6 +2,7 @@
 #include <chrono>
 #include <stack>
 #include <cmath>
+#include <fstream>
 using namespace std;
 
 void moveDisks(int, stack<int> &, stack<int> &, stack<int>&);
@@ -9,14 +10,26 @@ void printIt(int , char , char );
 void MoveDisksHelper(stack<int> &, stack<int> &, char , char ) ;
 
 int main() {
-  for (auto numdisks: {3,5,6}) {
+    
+    auto start = chrono::steady_clock::now();
+    auto end = chrono::steady_clock::now();
+    ofstream fileout;
+    fileout.open("timeLogIt.txt");
+
+  for (auto numdisks: { 3, 5, 10, 15, 20, 25, 30, 31, 32, 33 }) {
       stack<int> source;
       stack<int> dest;
       stack<int> aux;
       cout << "Numdisks: " << numdisks << endl;
+      fileout << "Numdisks: " << numdisks << endl;
+      start = chrono::steady_clock::now();
       moveDisks(numdisks, source, aux, dest);
+      end = chrono::steady_clock::now();
+      chrono::duration<double> elapsed_seconds = end - start;
       cout << "Moved " << numdisks << " pegs." <<  endl;
+      fileout << "Time(s): " << elapsed_seconds.count() << endl;
     }
+  fileout.close();
     return 0;
 }
 
