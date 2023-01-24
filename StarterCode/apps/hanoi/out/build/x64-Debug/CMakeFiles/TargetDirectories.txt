@@ -1,4 +1,4 @@
-E:/VS Projects/372/StarterCode/apps/hanoi/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-E:/VS Projects/372/StarterCode/apps/hanoi/out/build/x64-Debug/CMakeFiles/hanoi.dir
-E:/VS Projects/372/StarterCode/apps/hanoi/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
-E:/VS Projects/372/StarterCode/apps/hanoi/out/build/x64-Debug/CMakeFiles/hanoiit.dir
+E:/git372/cs372.coble/StarterCode/apps/hanoi/out/build/x64-Debug/CMakeFiles/hanoi.dir
+E:/git372/cs372.coble/StarterCode/apps/hanoi/out/build/x64-Debug/CMakeFiles/hanoiit.dir
+E:/git372/cs372.coble/StarterCode/apps/hanoi/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+E:/git372/cs372.coble/StarterCode/apps/hanoi/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

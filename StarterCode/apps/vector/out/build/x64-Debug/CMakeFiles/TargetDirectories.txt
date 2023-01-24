@@ -1,0 +1,3 @@
+E:/git372/cs372.coble/StarterCode/apps/vector/out/build/x64-Debug/CMakeFiles/vectTest.dir
+E:/git372/cs372.coble/StarterCode/apps/vector/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+E:/git372/cs372.coble/StarterCode/apps/vector/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

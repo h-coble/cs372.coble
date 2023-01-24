@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "E:/git372/cs372.coble/StarterCode/apps/vecRace/out/build/x64-Debug/CMakeFiles/vecRace.dir/embed.manifest"
