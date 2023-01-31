@@ -119,12 +119,12 @@ public:
         setupList();
         head->data = newData;
     }
-    List(List& rhs) { // copy constructor
+    List(List& rhs) { 
         deleteListContents();
         head = rhs.head;
         tail = rhs.tail;
     }
-    ~List() {// And a destructor
+    ~List() {
         deleteListContents();
     }
     //=========================================================

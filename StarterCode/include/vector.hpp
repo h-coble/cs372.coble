@@ -1,13 +1,99 @@
 #pragma once
 #include<iostream>
-
-
-
 template <typename T>
 class Vector
 {
 public:
-	
+	class const_iterator {
+	protected:
+		T* current;
+		T& retrieve() const { return *current; }
+		const_iterator(T* arr) : current(arr) { }
+		friend class Vector<T>;
+	public:
+		const_iterator() : current(nullptr) { }
+
+		T& operator *() const
+		{
+			return retrieve();
+		}
+
+		const_iterator& operator++()
+		{
+			current++;
+			return *this;
+		}
+		const_iterator& operator--()
+		{
+			current--;
+			return *this;
+		}
+		const_iterator operator++(int)
+		{
+			const_iterator old = *this;
+			++(*this);
+			return old;
+		}
+		const_iterator operator--(int)
+		{
+			const_iterator old = *this;
+			--(*this);
+			return old;
+		}
+		bool operator==(const const_iterator& rhs) const
+		{
+			return current == rhs.current;
+		}
+		bool operator!=(const_iterator& rhs) const
+		{
+			return !(*this == rhs);
+		}
+	};
+	class iterator : public const_iterator
+	{
+	protected:
+		iterator(T* arr) : const_iterator(arr) {}
+		friend class Vector<T>;
+	public:
+		iterator() {}
+
+		T& operator*()
+		{
+			return const_iterator::retrieve();
+		}
+
+		const T& operator*()const
+		{
+			return const_iterator::operator*();
+		}
+
+		iterator& operator++()
+		{
+			current++;
+			return *this;
+		}
+		iterator& operator--()
+		{
+			current--;
+			return *this;
+		}
+
+		iterator operator++ (int)
+		{
+			iterator old = *this;
+			**(*this);
+			return old;
+		}
+		bool operator==(const const_iterator& rhs) const
+		{
+			return current == rhs.current;
+		}
+		bool operator!=(const_iterator& rhs) const
+		{
+			return !(*this == rhs);
+		}
+	};
+
 	Vector()
 	{
 		arr = new T[1];
@@ -93,6 +179,14 @@ public:
 		else
 			return arr[index];
 	}
+	T& at(iterator pos)
+	{
+		return *pos;
+	}
+	T& at(const_iterator pos)
+	{
+		return *pos;
+	}
 
 	int size()
 	{
@@ -128,6 +222,40 @@ public:
 		return *this;
 	}
 
+	iterator begin() { return &arr[0]; }
+	iterator end() { return &arr[length]; }
+	iterator rbegin(){ return &arr[length-1]; }
+	iterator rend() { return &arr[-1]; }
+
+	const_iterator cbegin() { return &arr[0]; }
+	const_iterator cend() { return &arr[length]; }
+	const_iterator crbegin() { return &arr[length - 1]; }
+	const_iterator crend() { return &arr[-1]; }
+
+	iterator insert(iterator pos, const T& data)
+	{
+		int index = length-1;
+		auto iter = rbegin();
+		for (iter; iter != pos; --iter)
+		{
+			if (iter == rbegin())
+			{
+				push_back(arr[length-1]);
+			}
+				arr[index] = arr[index-1];
+			index--;
+		}		
+		arr[index] = data;
+
+		//Return doesn't work properly, but insert functions well
+		//=========================================================
+		auto iterReturn = begin();
+		for (int i = 0; i < index; i++)
+			++iterReturn;
+		return --iterReturn;
+		//iterator must be reset outside of member function to work
+		//=========================================================
+	}
 private:
 	T* arr = new T[1];
 	int vCapacity = 1;

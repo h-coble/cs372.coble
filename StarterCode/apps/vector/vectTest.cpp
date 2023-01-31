@@ -40,4 +40,46 @@ int main()
 	vectorB.traverse();
 
 	C.traverse();
+
+	for (auto iter = C.begin(); iter != C.end(); ++iter)
+	{
+		std::cout<<C.at(iter) << " ";
+	}
+	std::cout << std::endl;
+	for (auto iter = C.rbegin(); iter != C.rend(); --iter)
+	{
+		std::cout << C.at(iter) << " ";
+	}
+	std::cout << std::endl;
+	for (auto iter = C.cbegin(); iter != C.cend(); ++iter)
+	{
+		std::cout << C.at(iter) << " ";
+	}
+	std::cout << std::endl;
+	for (auto iter = C.crbegin(); iter != C.crend(); --iter)
+	{
+		std::cout << C.at(iter) << " ";
+	}
+
+	C.push_back(3);
+	C.push_back(7);
+	std::cout << std::endl;
+	C.traverse();
+	auto iter = C.begin();
+	++iter;
+	
+	C.insert(iter, 5);
+	std::cout << std::endl;
+
+	//iterator return doesn't work properly, must reset iterator if used again
+	iter = C.begin();
+	++iter;
+
+	C.traverse();
+	C.insert(iter, 6);
+	std::cout << std::endl;
+	C.traverse();
+
+
+
 }
