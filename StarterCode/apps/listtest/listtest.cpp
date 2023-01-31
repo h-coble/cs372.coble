@@ -13,6 +13,9 @@ void printItem(int &item) {
 
 int main() {
   List<int> aListOfIntegers;
+  List<int> anotherListOfIntegers;
+  
+
   if (aListOfIntegers.empty()) {
     std::cout << "Yep, the new list is empty. " << std::endl;
   }
@@ -21,6 +24,7 @@ int main() {
     aListOfIntegers.push_front(i);
   }
   aListOfIntegers.traverse(printItem);
+
   std::cout << std::endl;
 
   std::cout << "Test iterators: Mutable -> ";
@@ -63,5 +67,42 @@ int main() {
   aListOfIntegers.push_back(42);
   aListOfIntegers.traverse(printItem);
   std::cout << std::endl;
+
+  
+  for (int i = 3; i > 0; i--)
+  {
+      anotherListOfIntegers.push_front(i);
+  }
+  anotherListOfIntegers.traverse(printItem);
+  std::cout << std::endl << "insert pos 2: ";
+
+  
+  auto iterTest = anotherListOfIntegers.begin();
+  ++iterTest;
+  anotherListOfIntegers.insert(iterTest, 9);
+  anotherListOfIntegers.traverse(printItem);
+  std::cout << "\nerase pos 3: ";
+  anotherListOfIntegers.erase(iterTest);
+  anotherListOfIntegers.traverse(printItem);
+  std::cout << std::endl<< "insert two 9s: ";
+
+
+
+  iterTest = anotherListOfIntegers.begin();
+  ++iterTest;
+  anotherListOfIntegers.insert(iterTest, 9);
+  --iterTest;
+  anotherListOfIntegers.insert(iterTest, 9);
+
+
+
+  anotherListOfIntegers.traverse(printItem);
+  std::cout << std::endl << "erase pos 2 - 4: ";
+  iterTest = anotherListOfIntegers.begin();
+  ++iterTest;
+
+  auto iterEnd = anotherListOfIntegers.rbegin();
+  anotherListOfIntegers.erase(iterTest, iterEnd);
+  anotherListOfIntegers.traverse(printItem);
   return 0;
 }

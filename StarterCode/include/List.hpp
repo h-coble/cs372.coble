@@ -4,30 +4,30 @@ template <typename T>
 class List
 {
 private:
-  class Node {
-  public:
-    T  data;
-    Node* prev;
-    Node* next;
-  };
-  Node* head = nullptr;
-  Node* tail = nullptr;
-  void setupList() {
-    Node* newNode = new Node();
-    newNode->next = nullptr;
-    newNode->prev = nullptr;
-    head = newNode;
-    tail = newNode;
-  }
-  void deleteListContents() {
-    Node* temp = nullptr;
-    Node* current = head;
-    while (current != nullptr) {
-      temp = current->next;
-      delete current;
-      current = temp;
+    class Node {
+    public:
+        T  data;
+        Node* prev;
+        Node* next;
+    };
+    Node* head = nullptr;
+    Node* tail = nullptr;
+    void setupList() {
+        Node* newNode = new Node();
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
+        head = newNode;
+        tail = newNode;
     }
-  }
+    void deleteListContents() {
+        Node* temp = nullptr;
+        Node* current = head;
+        while (current != nullptr) {
+            temp = current->next;
+            delete current;
+            current = temp;
+        }
+    }
 public:
     //NESTED CLASSES==========================================
     class const_iterator {
@@ -112,112 +112,142 @@ public:
         }
     };
     //========================================================
-  List() : head(nullptr), tail(nullptr)  {}
-  
-  List(T newData) {
-    setupList();
-    head->data = newData;
-  }
-  List(List& rhs) { // copy constructor
-    deleteListContents();
-    head = rhs.head;
-    tail = rhs.tail;
-  }
-  ~List() {// And a destructor
-    deleteListContents();
-  }
-  bool  empty() {
-    return (head == nullptr);
-  }
-  void push_front(T data) {
-    Node* newNode = new Node();
-    newNode->data = data;
-    newNode->next = head;
-    newNode->prev = nullptr;
-    if (empty()) {
-      head = newNode;
-      tail = newNode;
-    }
-    else {
-        head->prev = newNode; 
-        head = newNode;
-    }
-  }
-  void push_back(T data) {
-    Node* newNode = new Node();
-    newNode->data = data;
-    newNode->next = nullptr;
-    newNode->prev = tail;
-    if (empty()) {
-      tail = newNode;
-      head = newNode;
-    }
-    else {
-      tail->next = newNode;
-      tail = newNode;
-    }
-  }
-  void pop_back() {
-    Node *lastNode = tail;
-    if (lastNode != nullptr) {
-      tail = tail->prev;
-      tail->next = nullptr;
-      delete lastNode;
-    }
-  }
-  T front() {
-    if (!empty()) {
-      return head->data;
-    }
-    else {
-      // This is drastic, and should be handled using an exception handler
-      std::cout << "Exception: list is empty."  << std::endl;
-      exit(1);
-    }
-  }
-  T back() {
-    if (!empty()) {
-      return tail->data;
-    }
-    else {
-      // This is drastic, and should be handled using an exception handler
-      std::cout << "Exception: list is empty."  << std::endl;
-      exit(1);
-    }
-  }
+    //CONSTRUCTORS=&=DESTRUCTORS==============================
+    List() : head(nullptr), tail(nullptr) {}
 
-  void traverse(void (*doIt)(T& data)) {
-    Node* current = head;
-    while (current != nullptr) {
-      doIt(current->data);
-      current = current->next;
+    List(T newData) {
+        setupList();
+        head->data = newData;
     }
-  }
+    List(List& rhs) { // copy constructor
+        deleteListContents();
+        head = rhs.head;
+        tail = rhs.tail;
+    }
+    ~List() {// And a destructor
+        deleteListContents();
+    }
+    //=========================================================
+
+    bool  empty() {
+        return (head == nullptr);
+    }
+    void push_front(T data) {
+        Node* newNode = new Node();
+        newNode->data = data;
+        newNode->next = head;
+        newNode->prev = nullptr;
+        if (empty()) {
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            head->prev = newNode;
+            head = newNode;
+        }
+    }
+    void push_back(T data) {
+        Node* newNode = new Node();
+        newNode->data = data;
+        newNode->next = nullptr;
+        newNode->prev = tail;
+        if (empty()) {
+            tail = newNode;
+            head = newNode;
+        }
+        else {
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
+    void pop_back() {
+        Node* lastNode = tail;
+        if (lastNode != nullptr) {
+            tail = tail->prev;
+            tail->next = nullptr;
+            delete lastNode;
+        }
+    }
+    T front() {
+        if (!empty()) {
+            return head->data;
+        }
+        else {
+            // This is drastic, and should be handled using an exception handler
+            std::cout << "Exception: list is empty." << std::endl;
+            exit(1);
+        }
+    }
+    T back() {
+        if (!empty()) {
+            return tail->data;
+        }
+        else {
+            // This is drastic, and should be handled using an exception handler
+            std::cout << "Exception: list is empty." << std::endl;
+            exit(1);
+        }
+    }
+
+    void traverse(void (*doIt)(T& data)) {
+        Node* current = head;
+        while (current != nullptr) {
+            doIt(current->data);
+            current = current->next;
+        }
+    }
 
 
+    //Q3====================================================
+    iterator insert(iterator pos, const T& data)
+    {
+        Node* newNode = pos.current;
 
+        return { newNode->prev = newNode->prev->next = new Node{ data, newNode->prev, newNode } };
+    }
 
-  iterator begin() { return head->next; }
-  iterator end() { return tail; }
-  const_iterator cbegin() const
+    iterator erase(iterator pos)
+    {
+        Node* newNode = pos.current;
+        iterator afterDel{ newNode->next };
+        newNode->prev->next = newNode->next;
+        newNode->next->prev = newNode->prev;
+        delete newNode;
+
+        return afterDel;
+    }
+
+    iterator erase(iterator from, iterator to)
+    {
+        for (iterator itr = from; itr != to; )
+            itr = erase(itr);
+        return to;
+    }
+    //=======================================================
+
+    //Q2=====================================================
+    iterator begin() { return head; }
+    iterator end() { return tail->next; }
+    const_iterator cbegin() const
   {
-      return head->next;
+        return { head };
   }
-  const_iterator cend() const
+    const_iterator cend() const
   {
-      return { tail };
+      return {tail->next};
   }
 
-  iterator rbegin() { return tail->prev; }//tail->prev?
-  iterator rend() { return head; }
-  const_iterator crbegin() const
+    iterator rbegin() { return tail; }
+    iterator rend() { return head->prev; }
+    const_iterator crbegin() const
   {
-      return tail->prev;  //tail->prev?
+      return tail;  //tail->prev?
   }
-  const_iterator crend() const
+    const_iterator crend() const
   {
-      return { head };
+      return { head->prev};
   }
+    //========================================================
 };
 
 
