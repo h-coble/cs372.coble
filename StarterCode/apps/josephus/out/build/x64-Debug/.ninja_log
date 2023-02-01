@@ -1,0 +1,10 @@
+# ninja log v5
+3	1041	6969207594496362	CMakeFiles/josephus.dir/josephus.cpp.obj	8ac4ec0fb227804a
+533	856	6969207833567596	josephus.exe	98e0d6fb73b6eb9d
+1	532	6969207830675094	CMakeFiles/josephus.dir/jo2.cpp.obj	7acf4a927b9b0bce
+13	874	6969212837627127	CMakeFiles/josephus.dir/josephus.cpp.obj	8ac4ec0fb227804a
+875	1402	6969212841237881	josephus.exe	98e0d6fb73b6eb9d
+0	676	6969214877990667	CMakeFiles/josephus.dir/josephus.cpp.obj	8ac4ec0fb227804a
+676	1137	6969214882149143	josephus.exe	98e0d6fb73b6eb9d
+0	684	6969218300287220	CMakeFiles/josephus.dir/josephus.cpp.obj	8ac4ec0fb227804a
+684	951	6969218302032605	josephus.exe	98e0d6fb73b6eb9d

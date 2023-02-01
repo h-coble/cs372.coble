@@ -12,6 +12,7 @@ private:
     };
     Node* head = nullptr;
     Node* tail = nullptr;
+    int size = 0;
     void setupList() {
         Node* newNode = new Node();
         newNode->next = nullptr;
@@ -29,6 +30,7 @@ private:
         }
     }
 public:
+    int getSize() { return this->size; }
     //NESTED CLASSES==========================================
     class const_iterator {
     protected:
@@ -145,6 +147,7 @@ public:
             head->prev = newNode;
             head = newNode;
         }
+        size++;
     }
     void push_back(T data) {
         Node* newNode = new Node();
@@ -159,6 +162,7 @@ public:
             tail->next = newNode;
             tail = newNode;
         }
+        size++;
     }
     void pop_back() {
         Node* lastNode = tail;
@@ -167,6 +171,16 @@ public:
             tail->next = nullptr;
             delete lastNode;
         }
+        size--;
+    }
+    void pop_front() {
+        Node* firstNode = head;
+        if (firstNode != nullptr) {
+            head = head->next;
+            head->prev = nullptr;
+            delete firstNode;
+        }
+        size--;
     }
     T front() {
         if (!empty()) {
@@ -202,8 +216,9 @@ public:
     iterator insert(iterator pos, const T& data)
     {
         Node* newNode = pos.current;
-
+        size++;
         return { newNode->prev = newNode->prev->next = new Node{ data, newNode->prev, newNode } };
+        
     }
 
     iterator erase(iterator pos)
@@ -213,14 +228,17 @@ public:
         newNode->prev->next = newNode->next;
         newNode->next->prev = newNode->prev;
         delete newNode;
-
+        size--;
         return afterDel;
+        
     }
 
     iterator erase(iterator from, iterator to)
     {
         for (iterator itr = from; itr != to; )
             itr = erase(itr);
+
+        size -= (to - from);
         return to;
     }
     //=======================================================
