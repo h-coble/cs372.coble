@@ -1,10 +1,15 @@
 # ninja log v5
-3	1041	6969207594496362	CMakeFiles/josephus.dir/josephus.cpp.obj	8ac4ec0fb227804a
-533	856	6969207833567596	josephus.exe	98e0d6fb73b6eb9d
-1	532	6969207830675094	CMakeFiles/josephus.dir/jo2.cpp.obj	7acf4a927b9b0bce
-13	874	6969212837627127	CMakeFiles/josephus.dir/josephus.cpp.obj	8ac4ec0fb227804a
-875	1402	6969212841237881	josephus.exe	98e0d6fb73b6eb9d
-0	676	6969214877990667	CMakeFiles/josephus.dir/josephus.cpp.obj	8ac4ec0fb227804a
-676	1137	6969214882149143	josephus.exe	98e0d6fb73b6eb9d
-0	684	6969218300287220	CMakeFiles/josephus.dir/josephus.cpp.obj	8ac4ec0fb227804a
-684	951	6969218302032605	josephus.exe	98e0d6fb73b6eb9d
+1	589	6972549032202540	CMakeFiles/josephus.dir/josephus.cpp.obj	e64825c0361e320
+589	789	6972549034054227	josephus.exe	d4f2918c267f996a
+8	325	6972550790741300	CMakeFiles/josephus.dir/josephus.cpp.obj	e64825c0361e320
+326	419	6972550791450276	josephus.exe	d4f2918c267f996a
+2	579	6972560696137166	CMakeFiles/josephus.dir/josephus.cpp.obj	e64825c0361e320
+580	677	6972560696867829	josephus.exe	d4f2918c267f996a
+8	447	6972562011352796	CMakeFiles/josephus.dir/josephus.cpp.obj	e64825c0361e320
+447	540	6972562012063434	josephus.exe	d4f2918c267f996a
+2	459	6972564114458363	CMakeFiles/josephus.dir/josephus.cpp.obj	e64825c0361e320
+459	555	6972564115199022	josephus.exe	d4f2918c267f996a
+8	441	6972564448623472	CMakeFiles/josephus.dir/josephus.cpp.obj	e64825c0361e320
+441	534	6972564449344123	josephus.exe	d4f2918c267f996a
+8	450	6972564865147754	CMakeFiles/josephus.dir/josephus.cpp.obj	e64825c0361e320
+450	546	6972564865878404	josephus.exe	d4f2918c267f996a

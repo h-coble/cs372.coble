@@ -25,7 +25,8 @@ private:
         Node* current = head;
         while (current != nullptr) {
             temp = current->next;
-            delete current;
+            if (current!= nullptr)
+                 delete current;
             current = temp;
         }
     }
@@ -166,21 +167,44 @@ public:
     }
     void pop_back() {
         Node* lastNode = tail;
-        if (lastNode != nullptr) {
-            tail = tail->prev;
-            tail->next = nullptr;
-            delete lastNode;
+        if (!empty())
+        {
+            if (head == tail)
+            {
+                head = nullptr;
+                tail = nullptr;
+            }
+            else if (lastNode != nullptr) {
+
+                tail = tail->prev;
+                tail->next = nullptr;
+                //delete lastNode
+            }
+            size--;
         }
-        size--;
+        delete lastNode;//moved from above
+        
     }
-    void pop_front() {
+    void pop_front() {//same changes as pop_back
         Node* firstNode = head;
-        if (firstNode != nullptr) {
-            head = head->next;
-            head->prev = nullptr;
-            delete firstNode;
+        if (!empty())
+        {
+            if (head == tail)
+            {
+                head = nullptr;
+                tail = nullptr;
+            }
+
+            else if (firstNode != nullptr) 
+            {
+                head = head->next;
+                head->prev = nullptr;
+                
+            }
+            size--;
         }
-        size--;
+        delete firstNode;
+       
     }
     T front() {
         if (!empty()) {
