@@ -226,6 +226,11 @@ public:
             exit(1);
         }
     }
+    T at(iterator pos)
+    {
+        Node* currentNode = pos.current;
+        return currentNode->data;
+    }
 
     void traverse(void (*doIt)(T& data)) {
         Node* current = head;
@@ -249,8 +254,14 @@ public:
     {
         Node* newNode = pos.current;
         iterator afterDel{ newNode->next };
-        newNode->prev->next = newNode->next;
-        newNode->next->prev = newNode->prev;
+        if (newNode != head)
+            newNode->prev->next = newNode->next;
+        else
+            head = newNode->next;
+        if (newNode != tail)
+            newNode->next->prev = newNode->prev;
+        else
+            tail = newNode->prev;
         delete newNode;
         size--;
         return afterDel;
