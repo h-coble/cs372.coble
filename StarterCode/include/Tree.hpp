@@ -180,33 +180,55 @@ public:
     {
         if (root != nullptr)
         {
-            while (root->_lft != nullptr)   //Find left-most leaf
+            while (root->_lft != nullptr)   //while root isn't set to left-most leaf
             {
-                root = root->_lft;
+                root = root->_lft;          //set root = to its left child
             }
         }
-        return root;
+        return root; //return left-most leaf
     }
 
     void remove(const T deletionVal, std::shared_ptr<Node>& subRoot)             
     {
         if (subRoot == nullptr)
             return;
-        if (deletionVal < subRoot->_val)                                                                        //value is less than this node, continue down left side of tree to find it
+        if (deletionVal < subRoot->_val)                                                                        //CURRENT CONDITION: value is less than this node, continue down left side of tree to find it
+            
             remove(deletionVal, subRoot->_lft);
-        else if (subRoot->_val < deletionVal)                                                                   //value is greater, continue down right side to find node with value
+
+        else if (subRoot->_val < deletionVal)                                                                   //CURRENT CONDITION: value is greater, continue down right side to find node with value
             remove(deletionVal, subRoot->_rgt);
-        else if (subRoot->_lft != nullptr && subRoot->_rgt != nullptr)                                          //subRoot has 2 children and deleteValue == subRoot value
+
+        else if (subRoot->_lft != nullptr && subRoot->_rgt != nullptr)                                          //CURRENT CONDITION: subRoot has 2 children and deleteValue == subRoot value
         {
-            subRoot->_val = findMin(subRoot->_rgt)->_val;   //findMin returns a Node ptr
+            subRoot->_val = findMin(subRoot->_rgt)->_val;   
             remove(subRoot->_val, subRoot->_rgt);
+
+            /*^ HOW THIS WORKS ^
+            //Restructures this (sub)tree:
+            //minValue found replaces value to be deleted; 
+            //essentially, this is the deletion we asked for as it no longer exists in tree.
+            //
+            //Then, it deletes the copied minValue from its original position.
+            */
         }
-        else
+
+        else                                                                                                    //CURRENT CONDITION: subRoot is leaf or has only 1 child AND val == deleteValue
         {
             std::shared_ptr<Node> oldNode = subRoot;
-            subRoot = (subRoot->_lft != nullptr) ? subRoot->_lft : subRoot->_rgt;
-           // delete oldNode;
+            subRoot = (subRoot->_lft != nullptr) ? subRoot->_lft : subRoot->_rgt;  
             oldNode.reset();
+
+            /*^ HOW THIS WORKS ^
+            // 
+            //subRoot passed by reference, so it now points to its only child or is nullptr:
+            // 
+            //if _lft child exists, point to left child; moves L child to subroot's place in tree
+            //else, point subroot to right child (which may also be nullptr); moves R child to subroot's place in tree
+            // 
+            //Subsequently, if it exists, the child's subtree (which it is the root of) is moved up a tier in tree 
+            // 
+            //if subRoot was a leaf, this doesn't matter; it is nullified and the shared pointer is deleted*/
         }
     }
 private:
