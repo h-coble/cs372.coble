@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "F:/GitSSD/cs372.coble/StarterCode/apps/TreeDemo/out/build/x64-Debug/CMakeFiles/treetest.dir/embed.manifest"
