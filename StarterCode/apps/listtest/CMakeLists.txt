@@ -11,5 +11,6 @@ include_directories(../../include)
 #add the executable
 add_executable(listtest listtest.cpp)
 
-#add_executable(selflist selflisttest.cpp)
+add_executable(selflist selflisttest.cpp)
 
+add_executable(lazydelete lazy.cpp)

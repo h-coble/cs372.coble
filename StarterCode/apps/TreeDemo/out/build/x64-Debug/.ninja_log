@@ -1,4 +1,5 @@
 # ninja log v5
+<<<<<<< Updated upstream
 4	838	6983810617584246	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
 14	874	6983810617929594	CMakeFiles/exptree.dir/ExpTree.cpp.obj	972855841da8c8d9
 840	1428	6983810623122191	treetest.exe	c4a66e59e0ef9de
@@ -45,3 +46,9 @@
 534	894	6983881265404389	treetest.exe	c4a66e59e0ef9de
 5	487	6983883205804446	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
 488	712	6983883207566044	treetest.exe	c4a66e59e0ef9de
+=======
+0	538	6987166925077053	CMakeFiles/treetest.dir/main.cpp.obj	15fbad75a404de4e
+5	618	6987166925858140	CMakeFiles/exptree.dir/ExpTree.cpp.obj	295d4aaf6ec4389e
+539	1191	6987166930980776	treetest.exe	e1b821afdba7bda6
+619	1193	6987166931293200	exptree.exe	aa5f4a88a4872001
+>>>>>>> Stashed changes

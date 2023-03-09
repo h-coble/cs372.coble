@@ -137,9 +137,9 @@ public:
             return false;
         T y = root();
         if (x < y)
-            return left().member(x);
+            return left().find(x);
         else if (y < x)
-            return right().member(x);
+            return right().find(x);
         else {
           foundValue = y;
           return true;

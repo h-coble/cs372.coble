@@ -9,7 +9,7 @@ public:
 	Stack() {}
 	Stack(Stack& rhQ) {}
 	~Stack() {}
-
+	int size() { return stackList.getSize(); }
 	bool empty(){ return stackList.empty(); }
 	void push(T data) { stackList.push_back(data);}
 	void pop() { stackList.pop_back(); }

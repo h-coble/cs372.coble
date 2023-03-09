@@ -1,3 +1,5 @@
-F:/GitSSD/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug/CMakeFiles/listtest.dir
-F:/GitSSD/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-F:/GitSSD/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+E:/Git Client/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug/CMakeFiles/listtest.dir
+E:/Git Client/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug/CMakeFiles/selflist.dir
+E:/Git Client/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug/CMakeFiles/lazydelete.dir
+E:/Git Client/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+E:/Git Client/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
