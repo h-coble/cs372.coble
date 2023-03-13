@@ -7,8 +7,8 @@ class AdjListGraph : public Graph<N>
 { 
 private:
 	using Edges = std::list<std::pair<int, int>>;
-	std::vector<N> nodeVector;		//A vector of node values
-	std::vector<Edges> edgesVector; //A vector of lists of nodes (indexes of) adjacent to the one whose value is represented at same index in nodeVector
+	std::vector<N> nodeVector;						//A vector of node values - objects
+	std::vector<Edges> edgesVector;					//A vector of entries to show nodes adjacent; Nodes in pair are represented by their corresponding index in the nodeVector <source, dest>
 public:
 //========| CONSTRUCTOR/DESTRUCTOR |========================
 
@@ -143,7 +143,7 @@ public:
 		bool found = true;
 		for (int i = 0; i < nodeVector.size(); i++)
 		{
-			//Find node in nodeVector and record their index 
+			//Find node in nodeVector and record the index 
 			if (nodeVector[i] == source)
 			{
 				x_index = i;
@@ -181,7 +181,7 @@ public:
 		int x_index = -1;
 		for (int i = 0; i < nodeVector.size(); i++)
 		{
-			//Find node in nodeVector and record their index 
+			//Find node in nodeVector and record the index 
 			if (nodeVector[i] == node)
 			{
 				x_index = i;
@@ -209,27 +209,23 @@ public:
 				edgesVector[i].clear();
 
 				int iPlusOne = i + 1;
-				if (iPlusOne >= edgesVector.size())//If next subscript is out of range
+				if (iPlusOne >= edgesVector.size())		//If next subscript is out of range
 					continue;
 				for (auto edge : edgesVector[iPlusOne])
 				{
 					if (!edgesVector[iPlusOne].empty())
 					{
 						edge.first -= 1;
-						//tempPair.first -= 1;
-						if (edge.second > x_index)	//If destination will be moved
-							edge.second -= 1;		//Adjust pair accordingly
+						if (edge.second > x_index)	//If destination will be moved left
+							edge.second -= 1;		//Adjust pair accordingly (shift left by one as well)
 						edgesVector[i].push_back(edge);
 					}
 				}
 				nodeVector[i] = nodeVector[iPlusOne];
 			}
+			//Once nodes are shifted/overwritten, pop the back, which is now a duplicate
 			edgesVector.pop_back();
 			nodeVector.pop_back();
-			//Rearrange and pop from Node vector
-			
-			//Use algorithm from notes
-			//[i] = [i+1] unles remove(vector[i]) is available
 		}
 	}
 };
