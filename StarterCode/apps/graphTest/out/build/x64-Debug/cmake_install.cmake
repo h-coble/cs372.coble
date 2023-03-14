@@ -1,8 +1,8 @@
-# Install script for directory: E:/Git Client/cs372.coble/StarterCode/apps/graphTest
+# Install script for directory: F:/GitSSD/cs372.coble/StarterCode/apps/graphTest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "E:/Git Client/cs372.coble/StarterCode/apps/graphTest/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "F:/GitSSD/cs372.coble/StarterCode/apps/graphTest/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/Git Client/cs372.coble/StarterCode/apps/graphTest/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "F:/GitSSD/cs372.coble/StarterCode/apps/graphTest/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

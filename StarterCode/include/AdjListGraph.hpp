@@ -1,29 +1,32 @@
 #include <vector>
 #include<list>
+#include<stack>
+#include<queue>
+#include<functional>
 #include"Graph.hpp"
 
 template <class N>
 class AdjListGraph : public Graph<N>
-{ 
+{
 private:
 	using Edges = std::list<std::pair<int, int>>;
 	std::vector<N> nodeVector;						//A vector of node values - objects
 	std::vector<Edges> edgesVector;					//A vector of entries to show nodes adjacent; Nodes in pair are represented by their corresponding index in the nodeVector <source, dest>
 public:
-//========| CONSTRUCTOR/DESTRUCTOR |========================
+	//========| CONSTRUCTOR/DESTRUCTOR |========================
 
-//Default
+	//Default
 	AdjListGraph() : Graph<N>() {};
 
-//Copy
-	AdjListGraph (const AdjListGraph& other) : Graph<N>() 
+	//Copy
+	AdjListGraph(const AdjListGraph& other) : Graph<N>()
 	{
 		nodeVector = other.nodeVector;
 		edgesVector = other.edgesVector;
 	}
 
-//Assignment Operator
-	AdjListGraph& operator= (const AdjListGraph &source) 
+	//Assignment Operator
+	AdjListGraph& operator= (const AdjListGraph& source)
 	{
 		AdjListGraph<N> tempGraph = source;
 		this->nodeVector = source.nodeVector;
@@ -31,24 +34,24 @@ public:
 		return tempGraph;
 	}
 
-//Specified Constructor
+	//Specified Constructor
 	AdjListGraph(std::vector<N> newNodes, std::vector<std::pair<N, N>> newEdges) : Graph<N>(newNodes, newEdges) { }
 
-//Destructor
+	//Destructor
 	~AdjListGraph() {}
 
-//===========================================================
- 
-//============| METHODS |================
-	virtual bool  adjacent(N x, N y) 
+	//===========================================================
+
+	//============| METHODS |================
+	virtual bool  adjacent(N x, N y)
 	{
-		
-		int x_index =-1, y_index = -1; //initialize to negative value
+
+		int x_index = -1, y_index = -1; //initialize to negative value
 
 		for (int i = 0; i < nodeVector.size(); i++)
 		{
 			//Find nodes in nodeVector and record their indexes 
-			if (nodeVector[i] == x) 
+			if (nodeVector[i] == x)
 				x_index = i;
 			if (nodeVector[i] == y)
 				y_index = i;
@@ -71,7 +74,7 @@ public:
 			return false;	//If not found as second in pairs, y is not adjacent to x.
 		}
 	}
-	virtual std::vector<N> neighbors(N x) 
+	virtual std::vector<N> neighbors(N x)
 	{
 		std::vector<N> neighborVec;
 
@@ -131,7 +134,7 @@ public:
 			addNode(dest);
 			y_index = nodeVector.size() - 1;
 		}
-		std::pair<int, int> newPair; 
+		std::pair<int, int> newPair;
 		newPair.first = x_index;
 		newPair.second = y_index;
 		edgesVector[x_index].push_back(newPair);
@@ -203,7 +206,7 @@ public:
 					deleteEdge(nodeVector[first], nodeVector[x_index]);
 				}
 			}
-			
+
 			for (int i = x_index; i < edgesVector.size(); i++)
 			{
 				edgesVector[i].clear();
@@ -226,6 +229,97 @@ public:
 			//Once nodes are shifted/overwritten, pop the back, which is now a duplicate
 			edgesVector.pop_back();
 			nodeVector.pop_back();
+		}
+	}
+
+
+
+	void dfs(N start, std::function<void(N)> visit)
+	{
+		std::vector<bool> visited(nodeVector.size(), false);
+		std::stack<N> toVisit;
+		toVisit.push(start);
+		int x_index = -1;
+		
+		while (!toVisit.empty()) 
+		{
+			N current = toVisit.top();
+			toVisit.pop();
+			for (int i = 0; i < nodeVector.size(); i++)
+			{
+				//Find nodes in nodeVector and record their indexes 
+				if (nodeVector[i] == current)
+					x_index = i;
+			}
+			if (x_index < 0)
+			{
+				std::cout << "Error: Node not in graph.\n";
+				return;
+			}
+			else if (!visited[x_index])
+			{
+				visit(current);
+				visited[x_index] = true;
+
+				for (auto& neighbor : neighbors(current))
+				{
+					for (int i = 0; i < nodeVector.size(); i++)
+					{
+						//Find nodes in nodeVector and record their indexes 
+						if (nodeVector[i] == neighbor)
+							x_index = i;
+					}
+
+					if (!visited[x_index])
+					{
+						toVisit.push(neighbor);
+					}
+				}
+			}
+		}
+	}
+	void bfs(N startNode, std::function<void(N)> visit)
+	{
+		std::vector<bool> visited(nodeVector.size(), false);
+		std::queue<N> toVisit;
+		toVisit.push(startNode);
+		int x_index = -1;
+
+		while (!toVisit.empty())
+		{
+			N current = toVisit.front();
+			toVisit.pop();
+			for (int i = 0; i < nodeVector.size(); i++)
+			{
+				//Find nodes in nodeVector and record their indexes 
+				if (nodeVector[i] == current)
+					x_index = i;
+			}
+			if (x_index < 0)
+			{
+				std::cout << "Error: Node not in graph.\n";
+				return;
+			}
+			else if (!visited[x_index])
+			{
+				visit(current);
+				visited[x_index] = true;
+
+				for (auto& neighbor : neighbors(current))
+				{
+					for (int i = 0; i < nodeVector.size(); i++)
+					{
+						//Find nodes in nodeVector and record their indexes 
+						if (nodeVector[i] == neighbor)
+							x_index = i;
+					}
+
+					if (!visited[x_index])
+					{
+						toVisit.push(neighbor);
+					}
+				}
+			}
 		}
 	}
 };
