@@ -8,5 +8,10 @@
   "ExpandedNodes": [
     ""
   ],
+<<<<<<< Updated upstream
+  "SelectedNode": "\\CMakeLists.txt",
+=======
+  "SelectedNode": "\\main.cpp",
+>>>>>>> Stashed changes
   "PreviewInSolutionExplorer": false
 }

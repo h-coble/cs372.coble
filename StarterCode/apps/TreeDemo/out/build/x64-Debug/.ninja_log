@@ -1,5 +1,54 @@
 # ninja log v5
-5	487	6983883205804446	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+<<<<<<< Updated upstream
+4	838	6983810617584246	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
 14	874	6983810617929594	CMakeFiles/exptree.dir/ExpTree.cpp.obj	972855841da8c8d9
-488	712	6983883207566044	treetest.exe	c4a66e59e0ef9de
+840	1428	6983810623122191	treetest.exe	c4a66e59e0ef9de
 874	1464	6983810623492402	exptree.exe	cbc5b707e038c1e2
+7	398	6983815989763669	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+398	620	6983815991649755	treetest.exe	c4a66e59e0ef9de
+5	522	6983818045464251	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+522	778	6983818047646240	treetest.exe	c4a66e59e0ef9de
+4	381	6983819035717092	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+382	595	6983819037508755	treetest.exe	c4a66e59e0ef9de
+4	700	6983873282967415	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+700	1053	6983873285890076	treetest.exe	c4a66e59e0ef9de
+4	373	6983873456438628	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+374	591	6983873458280307	treetest.exe	c4a66e59e0ef9de
+4	528	6983873786918448	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+528	764	6983873788950295	treetest.exe	c4a66e59e0ef9de
+4	407	6983874735050093	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+407	616	6983874736811717	treetest.exe	c4a66e59e0ef9de
+4	538	6983875337755714	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+539	768	6983875339697481	treetest.exe	c4a66e59e0ef9de
+4	391	6983876568968844	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+392	614	6983876570710427	treetest.exe	c4a66e59e0ef9de
+4	546	6983876929197777	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+547	762	6983876931139546	treetest.exe	c4a66e59e0ef9de
+4	550	6983877265811539	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+551	773	6983877267682699	treetest.exe	c4a66e59e0ef9de
+4	537	6983877945307937	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+538	772	6983877947289738	treetest.exe	c4a66e59e0ef9de
+5	502	6983878148588178	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+503	712	6983878150359792	treetest.exe	c4a66e59e0ef9de
+5	537	6983878830512788	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+538	839	6983878833095138	treetest.exe	c4a66e59e0ef9de
+4	528	6983879017693116	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+529	751	6983879019542305	treetest.exe	c4a66e59e0ef9de
+4	536	6983879408321293	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+537	765	6983879410253049	treetest.exe	c4a66e59e0ef9de
+4	392	6983880140791097	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+393	614	6983880142522670	treetest.exe	c4a66e59e0ef9de
+4	529	6983880480034837	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+529	772	6983880482106718	treetest.exe	c4a66e59e0ef9de
+4	525	6983880709651224	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+525	748	6983880711472882	treetest.exe	c4a66e59e0ef9de
+4	533	6983881262411650	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+534	894	6983881265404389	treetest.exe	c4a66e59e0ef9de
+5	487	6983883205804446	CMakeFiles/treetest.dir/main.cpp.obj	8bc0113adac34067
+488	712	6983883207566044	treetest.exe	c4a66e59e0ef9de
+=======
+0	538	6987166925077053	CMakeFiles/treetest.dir/main.cpp.obj	15fbad75a404de4e
+5	618	6987166925858140	CMakeFiles/exptree.dir/ExpTree.cpp.obj	295d4aaf6ec4389e
+539	1191	6987166930980776	treetest.exe	e1b821afdba7bda6
+619	1193	6987166931293200	exptree.exe	aa5f4a88a4872001
+>>>>>>> Stashed changes

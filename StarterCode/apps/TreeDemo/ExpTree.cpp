@@ -49,7 +49,11 @@ TreeOfStrings & buildExpTree(string expString) {
   return nodes.top();
 }
 
-void evalExpTree(TreeOfStrings & anExpTree) {
+void evalExpTree(TreeOfStrings & anExpTree) 
+{
+    //Review Lecture Recording if available.
+    //Contains algorithm; unless professor's reopsitory hasn't been updated, find it there
+
   cout << "Left as exercise for the student." << endl;
 }
 

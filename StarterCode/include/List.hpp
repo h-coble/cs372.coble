@@ -9,10 +9,12 @@ private:
         T  data;
         Node* prev;
         Node* next;
+        bool deleteState = 0;
     };
     Node* head = nullptr;
     Node* tail = nullptr;
     int size = 0;
+    int deletedNodes = 0;
     void setupList() {
         Node* newNode = new Node();
         newNode->next = nullptr;
@@ -149,6 +151,7 @@ public:
             head = newNode;
         }
         size++;
+
     }
     void push_back(T data) {
         Node* newNode = new Node();
@@ -164,13 +167,16 @@ public:
             tail = newNode;
         }
         size++;
+      
     }
     void pop_back() {
         Node* lastNode = tail;
+        tail->deleteState = true;
         if (!empty())
         {
             if (head == tail)
             {
+                
                 head = nullptr;
                 tail = nullptr;
             }
@@ -181,12 +187,16 @@ public:
                 //delete lastNode
             }
             size--;
+
         }
-        delete lastNode;//moved from above
+        
+        deletedNodes++;
+        //delete lastNode;
         
     }
     void pop_front() {//same changes as pop_back
         Node* firstNode = head;
+        head->deleteState = true;
         if (!empty())
         {
             if (head == tail)
@@ -202,8 +212,11 @@ public:
                 
             }
             size--;
+      
         }
-        delete firstNode;
+        
+
+        deletedNodes++;
        
     }
     T front() {
@@ -246,6 +259,7 @@ public:
     {
         Node* newNode = pos.current;
         size++;
+
         return { newNode->prev = newNode->prev->next = new Node{ data, newNode->prev, newNode } };
         
     }
@@ -253,6 +267,7 @@ public:
     iterator erase(iterator pos)
     {
         Node* newNode = pos.current;
+        pos.current->deleteState = true
         iterator afterDel{ newNode->next };
         if (newNode != head)
             newNode->prev->next = newNode->next;
@@ -262,19 +277,38 @@ public:
             newNode->next->prev = newNode->prev;
         else
             tail = newNode->prev;
-        delete newNode;
+        ;
         size--;
-        return afterDel;
-        
+
+        deletedNodes++;
+        return afterDel;        
     }
 
     iterator erase(iterator from, iterator to)
     {
         for (iterator itr = from; itr != to; )
             itr = erase(itr);
-
-        size -= (to - from);
         return to;
+    }
+
+    iterator eraseLazy(iterator pos)
+    {
+        Node* newNode = pos.current;
+        iterator afterDel = newNode->next;
+        
+        if (newNode->deleteState)
+        {
+            delete newNode;
+            deletedNodes--;
+        }
+        
+        return afterDel;
+
+    }
+    void freeLazy()
+    {
+        for (iterator itr = begin(); itr != end(); )
+            itr = eraseLazy(itr);
     }
     //=======================================================
 
@@ -282,25 +316,66 @@ public:
     iterator begin() { return head; }
     iterator end() { return tail->next; }
     const_iterator cbegin() const
-  {
+    {
         return { head };
-  }
+    }
     const_iterator cend() const
-  {
-      return {tail->next};
-  }
+    {
+        return { tail->next };
+    }
 
     iterator rbegin() { return tail; }
     iterator rend() { return head->prev; }
     const_iterator crbegin() const
-  {
-      return tail;  //tail->prev?
-  }
+    {
+        return tail;  //tail->prev?
+    }
     const_iterator crend() const
-  {
-      return { head->prev};
-  }
+    {
+        return { head->prev };
+    }
     //========================================================
+
+
+    void displayNodeStats()
+    {
+        std::cout << "Active Nodes/Size: " << this->size << std::endl;
+        std::cout << "Nodes to be deleted: " << this->deletedNodes << std::endl;
+    }
+};
+
+
+//MIDTERM EXAM QUESTION ONE
+template<typename T>
+class SelfAdjustingList: public List<T>
+{
+public:
+    T* find(T itemToFind)
+    {
+        T returnVal;
+        bool foundFlag = 0;
+        for (auto iter = this->begin(); iter != this->end(); ++iter)
+        {
+            if (this->at(iter) == itemToFind)
+            {
+                foundFlag = true;
+                this->push_front(itemToFind);
+                this->erase(iter);
+                returnVal = this->front();
+                return &returnVal;
+            }
+        }
+        if (foundFlag)
+        {
+            std::cerr << "There is a logic error in the find method.\n";
+        }
+        else
+        {
+            std::cerr << itemToFind << " is not in this list.\n";
+        }
+        returnVal = this->front();
+        return &returnVal;
+    }
 };
 
 

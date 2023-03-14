@@ -1,0 +1,21 @@
+# ninja log v5
+0	1087	6993249697100983	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+1088	2022	6993249705022306	syntaxCheck.exe	35f95209f66981ff
+1	609	6993252163925361	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+609	1201	6993252168405818	syntaxCheck.exe	35f95209f66981ff
+1	724	6993257374539542	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+725	1169	6993257377480392	syntaxCheck.exe	35f95209f66981ff
+1	699	6993257611553118	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+700	1068	6993257614177994	syntaxCheck.exe	35f95209f66981ff
+1	665	6993258070740766	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+665	1018	6993258073238695	syntaxCheck.exe	35f95209f66981ff
+0	609	6993258795906585	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+609	960	6993258798361972	syntaxCheck.exe	35f95209f66981ff
+0	665	6993259321891924	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+666	1017	6993259324382693	syntaxCheck.exe	35f95209f66981ff
+0	692	6993260101027607	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+692	1057	6993260103587403	syntaxCheck.exe	35f95209f66981ff
+0	506	6993260557352348	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+506	911	6993260560339527	syntaxCheck.exe	35f95209f66981ff
+1	691	6993261631061924	CMakeFiles/syntaxCheck.dir/syntaxCheck.cpp.obj	50a3adbfb1c15d55
+691	1017	6993261633565060	syntaxCheck.exe	35f95209f66981ff

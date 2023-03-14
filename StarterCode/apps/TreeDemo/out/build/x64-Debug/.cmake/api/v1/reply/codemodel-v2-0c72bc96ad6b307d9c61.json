@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.11"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TreeDemo",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "exptree::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-exptree-Debug-924dfed58ed46332f3d6.json",
+					"name" : "exptree",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "treetest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-treetest-Debug-0a3f4dcd3ec24ef695c3.json",
+					"name" : "treetest",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/Git Client/cs372.coble/StarterCode/apps/TreeDemo/out/build/x64-Debug",
+		"source" : "E:/Git Client/cs372.coble/StarterCode/apps/TreeDemo"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

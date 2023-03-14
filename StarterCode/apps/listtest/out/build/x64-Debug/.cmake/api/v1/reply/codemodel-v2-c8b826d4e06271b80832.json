@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "listtest",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "lazydelete::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lazydelete-Debug-e6fe9334462148c6ad97.json",
+					"name" : "lazydelete",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "listtest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-listtest-Debug-a3a5e8429a5817b8d74b.json",
+					"name" : "listtest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "selflist::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-selflist-Debug-0bd52cbc009c60b92c85.json",
+					"name" : "selflist",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/Git Client/cs372.coble/StarterCode/apps/listtest/out/build/x64-Debug",
+		"source" : "E:/Git Client/cs372.coble/StarterCode/apps/listtest"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
