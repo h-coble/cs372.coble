@@ -114,6 +114,43 @@ build graphMatrixTest.exe: CXX_EXECUTABLE_LINKER__graphMatrixTest_Debug CMakeFil
   TARGET_IMPLIB = graphMatrixTest.lib
   TARGET_PDB = graphMatrixTest.pdb
 
+# =============================================================================
+# Object build statements for EXECUTABLE target cycle
+
+
+#############################################
+# Order-only phony target for cycle
+
+build cmake_object_order_depends_target_cycle: phony || CMakeFiles\cycle.dir
+
+build CMakeFiles\cycle.dir\cycle.cpp.obj: CXX_COMPILER__cycle_Debug F$:\GitSSD\cs372.coble\StarterCode\apps\graphTest\cycle.cpp || cmake_object_order_depends_target_cycle
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -IF:\GitSSD\cs372.coble\StarterCode\apps\graphTest\..\..\include
+  OBJECT_DIR = CMakeFiles\cycle.dir
+  OBJECT_FILE_DIR = CMakeFiles\cycle.dir
+  TARGET_COMPILE_PDB = CMakeFiles\cycle.dir\
+  TARGET_PDB = cycle.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target cycle
+
+
+#############################################
+# Link the executable cycle.exe
+
+build cycle.exe: CXX_EXECUTABLE_LINKER__cycle_Debug CMakeFiles\cycle.dir\cycle.cpp.obj
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  OBJECT_DIR = CMakeFiles\cycle.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = CMakeFiles\cycle.dir\
+  TARGET_FILE = cycle.exe
+  TARGET_IMPLIB = cycle.lib
+  TARGET_PDB = cycle.pdb
+
 
 #############################################
 # Utility command for edit_cache
@@ -140,6 +177,8 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build cycle: phony cycle.exe
+
 build graphMatrixTest: phony graphMatrixTest.exe
 
 build graphTest: phony graphTest.exe
@@ -152,7 +191,7 @@ build graphTest: phony graphTest.exe
 #############################################
 # Folder: F:/GitSSD/cs372.coble/StarterCode/apps/graphTest/out/build/x64-Debug
 
-build all: phony graphTest.exe graphMatrixTest.exe
+build all: phony graphTest.exe graphMatrixTest.exe cycle.exe
 
 # =============================================================================
 # Unknown Build Time Dependencies.

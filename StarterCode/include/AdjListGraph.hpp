@@ -104,6 +104,14 @@ public:
 	}
 	virtual void addNode(N node)
 	{
+		//Prevent duplicates
+		for (int i = 0; i < nodeVector.size(); i++)
+		{
+			if (nodeVector[i] == node)
+			{
+				return;
+			}
+		}
 		nodeVector.push_back(node);
 		Edges temp;
 		edgesVector.push_back(temp);
@@ -231,8 +239,6 @@ public:
 			nodeVector.pop_back();
 		}
 	}
-
-
 
 	void dfs(N start, std::function<void(N)> visit)
 	{
