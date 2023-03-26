@@ -9,7 +9,7 @@ template <class N>
 class AdjMatrixGraph : public Graph<N>
 { 
 private:
-	const static int MAXSIZE = 4;
+	const static int MAXSIZE = 100;
 	std::vector<N> nodeVector;					//A vector of node values - objects
 	bool adjMatrix[MAXSIZE][MAXSIZE];		//A vector of entries to show nodes adjacent; Nodes in pair are represented by their corresponding index in the nodeVector <source, dest>
 public:
@@ -123,6 +123,14 @@ public:
 	}
 	virtual void addNode(N node)
 	{
+		for (int i = 0; i < nodeVector.size(); i++)
+		{
+			//Find node in nodeVector and record their index 
+			if (nodeVector[i] == node)
+			{
+				return;
+			}
+		}
 		nodeVector.push_back(node);
 	}
 	virtual void  addEdge(N source, N dest)
@@ -340,5 +348,135 @@ public:
 				}
 			}
 		}
+	}
+
+	bool baconFS(N startNode, std::function<bool(N)> bacon, std::list<N>& path)
+	{
+		std::vector<bool> visited(nodeVector.size(), false);
+		std::queue<N> toVisit;
+		toVisit.push(startNode);
+		int x_index = -1, first =-1;
+		bool found = false;
+		
+
+		for (int i = 0; i < nodeVector.size(); i++)
+		{
+			//Find nodes in nodeVector and record their indexes 
+			if (nodeVector[i] == startNode)
+				first = i;
+		}
+		if (first < 0)
+		{
+			std::cout << "Error: Starting person not in graph.\n";
+			return false;
+		}
+		while (!toVisit.empty())
+		{
+			N current = toVisit.front();
+			toVisit.pop();
+			for (int i = 0; i < nodeVector.size(); i++)
+			{
+				//Find nodes in nodeVector and record their indexes 
+				if (nodeVector[i] == current)
+					x_index = i;
+			}
+			if (x_index < 0)
+			{
+				std::cout << "Error: Node not in graph.\n";
+				return false;
+			}
+			else if (!visited[x_index])
+			{
+				if (bacon(current))
+				{
+					found = true;
+					break;
+				}
+				visited[x_index] = true;
+				path.push_back(current);
+				for (auto& neighbor : neighbors(current))
+				{
+					for (int i = 0; i < nodeVector.size(); i++)
+					{
+						//Find nodes in nodeVector and record their indexes 
+						if (nodeVector[i] == neighbor)
+							x_index = i;
+					}
+
+					if (!visited[x_index])
+					{
+						toVisit.push(neighbor);
+					}
+				}
+			}
+		}
+		if(found)
+			std::cout << nodeVector[first] << " is connected to Kevin Bacon.\n";
+		else
+			std::cout << nodeVector[first] << " has no connection to Kevin Bacon.\n";
+		return found;
+	}
+
+
+
+
+	bool dbfs(N start, std::function<bool(N)> bacon, std::list<N>& path)
+	{
+		std::vector<bool> visited(nodeVector.size(), false);
+		std::stack<N> toVisit;
+		toVisit.push(start);
+		int x_index = -1, first = -1;
+		bool found = false;
+		for (int i = 0; i < nodeVector.size(); i++)
+		{
+			//Find nodes in nodeVector and record their indexes 
+			if (nodeVector[i] == start)
+				first = i;
+		}
+		while (!toVisit.empty())
+		{
+			N current = toVisit.top();
+			toVisit.pop();
+			for (int i = 0; i < nodeVector.size(); i++)
+			{
+				//Find nodes in nodeVector and record their indexes 
+				if (nodeVector[i] == current)
+					x_index = i;
+			}
+			if (x_index < 0)
+			{
+				std::cout << "Error: Node not in graph.\n";
+				return false;
+			}
+			else if (!visited[x_index])
+			{
+				if (bacon(current))
+				{
+					found = true;
+					break;
+				}
+				visited[x_index] = true;
+				path.push_back(current);
+				for (auto& neighbor : neighbors(current))
+				{
+					for (int i = 0; i < nodeVector.size(); i++)
+					{
+						//Find nodes in nodeVector and record their indexes 
+						if (nodeVector[i] == neighbor)
+							x_index = i;
+					}
+
+					if (!visited[x_index])
+					{
+						toVisit.push(neighbor);
+					}
+				}
+			}
+		}
+		if (found)
+			std::cout << nodeVector[first] << " is connected to Kevin Bacon.\n";
+		else
+			std::cout << nodeVector[first] << " has no connection to Kevin Bacon.\n";
+		return found;
 	}
 };

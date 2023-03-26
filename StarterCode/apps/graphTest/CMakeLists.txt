@@ -12,5 +12,5 @@ include_directories(../../include)
 add_executable(graphTest graphTest.cpp)
 add_executable(graphMatrixTest graphMatrixTest.cpp)
 add_executable(cycle cycle.cpp)
-
+add_executable(bacon KevinBacon.cpp)
 
