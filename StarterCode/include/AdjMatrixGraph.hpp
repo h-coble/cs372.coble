@@ -408,6 +408,7 @@ public:
 						toVisit.push(neighbor);
 					}
 				}
+				
 			}
 		}
 		if(found)
@@ -417,66 +418,5 @@ public:
 		return found;
 	}
 
-
-
-
-	bool dbfs(N start, std::function<bool(N)> bacon, std::list<N>& path)
-	{
-		std::vector<bool> visited(nodeVector.size(), false);
-		std::stack<N> toVisit;
-		toVisit.push(start);
-		int x_index = -1, first = -1;
-		bool found = false;
-		for (int i = 0; i < nodeVector.size(); i++)
-		{
-			//Find nodes in nodeVector and record their indexes 
-			if (nodeVector[i] == start)
-				first = i;
-		}
-		while (!toVisit.empty())
-		{
-			N current = toVisit.top();
-			toVisit.pop();
-			for (int i = 0; i < nodeVector.size(); i++)
-			{
-				//Find nodes in nodeVector and record their indexes 
-				if (nodeVector[i] == current)
-					x_index = i;
-			}
-			if (x_index < 0)
-			{
-				std::cout << "Error: Node not in graph.\n";
-				return false;
-			}
-			else if (!visited[x_index])
-			{
-				if (bacon(current))
-				{
-					found = true;
-					break;
-				}
-				visited[x_index] = true;
-				path.push_back(current);
-				for (auto& neighbor : neighbors(current))
-				{
-					for (int i = 0; i < nodeVector.size(); i++)
-					{
-						//Find nodes in nodeVector and record their indexes 
-						if (nodeVector[i] == neighbor)
-							x_index = i;
-					}
-
-					if (!visited[x_index])
-					{
-						toVisit.push(neighbor);
-					}
-				}
-			}
-		}
-		if (found)
-			std::cout << nodeVector[first] << " is connected to Kevin Bacon.\n";
-		else
-			std::cout << nodeVector[first] << " has no connection to Kevin Bacon.\n";
-		return found;
-	}
+	
 };
