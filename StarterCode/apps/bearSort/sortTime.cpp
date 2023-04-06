@@ -3,6 +3,8 @@
 #include<chrono>
 #include<iomanip>
 #include<algorithm>
+#include<ctime>
+#include<random>
 
 using std::cout;
 using std::endl;
@@ -49,9 +51,12 @@ void printArray(std::vector<T> theArray) {
 
 void randomVec(int size, std::vector<int>& vectInt)
 {
+	std::default_random_engine defEngine(time(0));
+	std::uniform_int_distribution<int> intDistro(0, 100000);
 	for (int i = 0; i < size; i++)	//Fill with randoms 0 - 100,000
 	{
-		vectInt.push_back(rand() % 100001);
+		
+		vectInt.push_back(intDistro(defEngine));
 	}
 
 }
@@ -193,6 +198,8 @@ int main()
 	std::cout << std::setw(24) << sTimes[7] << std::setw(16) << qTimes[7] << std::endl;
 	
 	qTimes.clear();
+	sTimes.clear();
+
 	std::cout << "\nIs Heapsort faster than SelSort?\n";
 
 	std::cout << "# of entries" << std::setw(15) << "Bool Value" << std::setw(16) << "Sel Time" << std::setw(16) << "Heap Time\n";
