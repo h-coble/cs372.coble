@@ -5,13 +5,47 @@
 //  Created by Adam Lewis on 10/3/16.
 //  Copyright © 2016 Adam Lewis. All rights reserved.
 //
-
+#include<functional>
 #include <iostream>
 #include "Tree.hpp"
 
 
-auto f2 = [](int thing)->void {std::cout << thing << " "; };
+template<typename T>
+int countNodes(std::shared_ptr<T> root) {
+    if (root == nullptr) {
+        return 0;
+    }
+    return 1 + countNodes(root->_lft) + countNodes(root->_rgt);
+}
 
+template<typename T>
+int countInternalNodes(std::shared_ptr<T> root) {
+    if (root == nullptr) {
+        return 0;
+    }
+    if (root->_rgt != nullptr && root->_lft != nullptr)
+        return 1 + countInternalNodes(root->_lft) + countInternalNodes(root->_rgt);
+    else if (root->_rgt != nullptr && root == nullptr)
+        return  1 + countInternalNodes(root->_rgt);
+    else if (root->_lft != nullptr && root == nullptr)
+        return  1 + countInternalNodes(root->_lft);
+    else
+        return 1;
+}
+
+template<typename T>
+void pathLength(std::shared_ptr<T> root, int& count) 
+{
+    count++;                         //Add one to variable
+    if (root->_lft != nullptr)      //Call for children if they exist
+        pathLength(root->_lft,count);   
+    if (root->_rgt != nullptr)
+        pathLength(root->_rgt,count);
+}
+
+
+auto f2 = [](int thing)->void {std::cout << thing << " "; };
+auto f3 = [](int thing,int numNodes)->void {numNodes++; };
 int main(int argc, const char * argv[]) {
 
     std::cout << "Tree test program\n";
@@ -72,7 +106,11 @@ int main(int argc, const char * argv[]) {
     aTree.postorder(f2);
     std::cout << std::endl;
     std::cout << "===================================\n";
-
-
-    return 0;
+    int b = 0;
+    Tree<int> anotherTree({ 45,74,28,32,45,44,100 });
+    b = countNodes(anotherTree.rootNode());
+    b = countInternalNodes(anotherTree.rootNode());
+    b = 0;
+    pathLength(anotherTree.rootNode(), b);
+    return b;
 }

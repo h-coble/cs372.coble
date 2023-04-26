@@ -1,0 +1,3 @@
+the only word that can be read left to right in this file is racecar.
+this file reads multiple lines as well.
+racecar is still the only word that is the same in the new file.

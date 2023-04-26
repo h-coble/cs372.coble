@@ -1,4 +1,5 @@
 E:/Git Client/cs372.coble/StarterCode/apps/TreeDemo/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
 E:/Git Client/cs372.coble/StarterCode/apps/TreeDemo/out/build/x64-Debug/CMakeFiles/treetest.dir
+E:/Git Client/cs372.coble/StarterCode/apps/TreeDemo/out/build/x64-Debug/CMakeFiles/treeFunct.dir
 E:/Git Client/cs372.coble/StarterCode/apps/TreeDemo/out/build/x64-Debug/CMakeFiles/edit_cache.dir
 E:/Git Client/cs372.coble/StarterCode/apps/TreeDemo/out/build/x64-Debug/CMakeFiles/exptree.dir

@@ -79,6 +79,7 @@ public:
 
     size_t size() { return numberOfNodes; }
 
+
     T root() const {
         assert(!isEmpty());
         return _root->_val;
@@ -231,6 +232,21 @@ public:
             //if subRoot was a leaf, this doesn't matter; it is nullified and the shared pointer is deleted*/
         }
     }
+
+
+
+    int numberNodes()
+    {
+        return size();
+    }
+
+    int internalNodes()
+    {
+        if (rootNode()->_lft == nullptr)
+            return
+            return 1 +
+    }
+
 private:
     std::shared_ptr<Node> _root;
 };
